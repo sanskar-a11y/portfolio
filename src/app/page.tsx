@@ -27,7 +27,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <Code className="w-6 h-6" style={{ color: '#6c63ff' }} />
             <span className="text-xl md:text-2xl font-light" style={{ color: 'rgba(240,240,248,0.55)' }}>
-              Developer
+              Creative Developer</span>
             </span>
           </div>
           <span className="hidden md:block text-2xl" style={{ color: 'rgba(240,240,248,0.20)' }}>·</span>
