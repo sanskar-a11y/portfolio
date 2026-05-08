@@ -25,7 +25,7 @@ export default function ProjectsPage() {
   return (
     <div className="pt-24">
       {/* Header */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24 text-center">
+      <motion.section {...sectionMotion} className="px-5 py-20 text-center sm:px-6 md:px-12 md:py-24 xl:px-24">
         <span className="pill-gradient inline-block mb-4">Portfolio</span>
         <h1 className="section-headline mb-6">
           Work that <span className="text-gradient">speaks.</span>
@@ -36,8 +36,8 @@ export default function ProjectsPage() {
       </motion.section>
 
       {/* Filter Tabs */}
-      <section className="px-6 md:px-12 xl:px-24 pb-12">
-        <div className="flex flex-wrap justify-center gap-3">
+      <section className="px-5 pb-12 sm:px-6 md:px-12 xl:px-24">
+        <div className="mx-auto flex max-w-[760px] flex-wrap justify-center gap-3">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -64,10 +64,10 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="px-6 md:px-12 xl:px-24 pb-24">
+      <section className="px-5 pb-24 sm:px-6 md:px-12 xl:px-24">
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1200px] mx-auto"
+          className="mx-auto grid max-w-[1200px] grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
           {filtered.length > 0 ? (
             filtered.map((project, i) => (
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
                 No projects in this category yet.
               </p>
               <p className="text-sm mt-2" style={{ color: 'rgba(240,240,248,0.35)' }}>
-                Check back soon — more work is coming.
+                Check back soon. More work is coming.
               </p>
             </div>
           )}

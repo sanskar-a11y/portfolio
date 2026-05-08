@@ -53,30 +53,28 @@ export default function Footer() {
     <footer
       className="relative z-[1]"
       style={{
-        background: '#0e0e1a',
-        borderTop: '1px solid rgba(255,255,255,0.07)',
+        background: 'linear-gradient(180deg, rgba(3,4,10,0.35), #02030a)',
+        borderTop: '1px solid rgba(159,252,255,0.12)',
       }}
     >
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8 py-16">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo */}
+      <div className="mx-auto max-w-[1200px] px-5 py-14 sm:px-6 md:px-8 md:py-16">
+        <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
           <Link href="/" className="flex items-center gap-2.5">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="9" cy="12" r="7" fill="#6c63ff" opacity="0.7" />
-              <circle cx="15" cy="12" r="7" fill="#a78bfa" opacity="0.7" />
+              <circle cx="9" cy="12" r="7" fill="#9ffcff" opacity="0.72" />
+              <circle cx="15" cy="12" r="7" fill="#ff7ab6" opacity="0.64" />
             </svg>
-            <span className="text-base font-medium" style={{ color: '#f0f0f8' }}>
+            <span className="text-base font-semibold uppercase tracking-[0.16em]" style={{ color: '#f0f0f8' }}>
               Sanskar
             </span>
           </Link>
 
-          {/* Center Links */}
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
             {footerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm transition-colors duration-300"
+                className="text-xs font-semibold uppercase tracking-[0.16em] transition-colors duration-300 hover:text-[#9ffcff]"
                 style={{ color: 'rgba(240, 240, 248, 0.55)' }}
               >
                 {link.label}
@@ -84,7 +82,6 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Social Icons — small glass circle buttons */}
           <div className="flex items-center gap-3">
             {socialLinks.map((link) => (
               <a
@@ -92,7 +89,7 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 card-glass"
+                className="card-glass flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 hover:text-[#9ffcff]"
                 style={{ color: 'rgba(240, 240, 248, 0.65)' }}
                 aria-label={link.label}
               >
@@ -102,7 +99,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div
           className="mt-12 pt-8 text-center"
           style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}

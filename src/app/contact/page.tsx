@@ -73,28 +73,21 @@ export default function ContactPage() {
   } = useForm<ContactFormData>()
 
   const onSubmit = async (data: ContactFormData) => {
-    try {
-      // Replace YOUR_FORM_ID with your Formspree form ID
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
+    const subject = encodeURIComponent(data.subject || `Portfolio inquiry from ${data.name}`)
+    const body = encodeURIComponent(
+      `Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`
+    )
 
-      if (response.ok) {
-        setSubmitted(true)
-        reset()
-        setTimeout(() => setSubmitted(false), 5000)
-      }
-    } catch {
-      // Handle error silently
-    }
+    window.open(`mailto:sanskarsharma923@gmail.com?subject=${subject}&body=${body}`, '_self')
+    setSubmitted(true)
+    reset()
+    setTimeout(() => setSubmitted(false), 5000)
   }
 
   const inputStyles: React.CSSProperties = {
     width: '100%',
     padding: '12px 16px',
-    borderRadius: '16px',
+    borderRadius: '8px',
     background: 'rgba(255,255,255,0.06)',
     border: '1px solid rgba(255,255,255,0.10)',
     color: '#f0f0f8',
@@ -106,7 +99,7 @@ export default function ContactPage() {
   return (
     <div className="pt-24">
       {/* Header */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24 text-center">
+      <motion.section {...sectionMotion} className="px-5 py-20 text-center sm:px-6 md:px-12 md:py-24 xl:px-24">
         <span className="pill-gradient inline-block mb-4">Contact</span>
         <h1 className="section-headline mb-6">
           Let&apos;s build <span className="text-gradient">something.</span>
@@ -117,8 +110,8 @@ export default function ContactPage() {
       </motion.section>
 
       {/* Content */}
-      <section className="px-6 md:px-12 xl:px-24 pb-24">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="px-5 pb-24 sm:px-6 md:px-12 xl:px-24">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
           {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -128,10 +121,10 @@ export default function ContactPage() {
           >
             {submitted ? (
               <div className="card-float p-12 text-center">
-                <CheckCircle className="w-16 h-16 mx-auto mb-4" style={{ color: '#22c55e' }} />
+                <CheckCircle className="mx-auto mb-4 h-16 w-16" style={{ color: '#22c55e' }} />
                 <h3 className="text-2xl font-bold mb-2" style={{ color: '#0f0f1a' }}>Message Sent!</h3>
                 <p style={{ color: '#6b6b80' }}>
-                  Thanks for reaching out. I&apos;ll get back to you soon.
+                  Your email app is opening with the message ready to send.
                 </p>
               </div>
             ) : (
@@ -307,8 +300,7 @@ export default function ContactPage() {
                 href={card.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-5 card-float transition-all duration-300 group"
-                style={{ borderRadius: '20px' }}
+                className="group flex items-center gap-4 p-5 transition-all duration-300 card-float"
               >
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors"
@@ -322,7 +314,7 @@ export default function ContactPage() {
                   <p className="text-sm font-semibold" style={{ color: '#0f0f1a' }}>
                     {card.label}
                   </p>
-                  <p className="text-xs" style={{ color: '#6b6b80' }}>
+                    <p className="break-all text-xs" style={{ color: '#6b6b80' }}>
                     {card.value}
                   </p>
                 </div>

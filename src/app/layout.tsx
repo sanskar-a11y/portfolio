@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Sanskar — Creative Developer & Visual Storyteller',
+  title: 'Sanskar - Creative Developer & Visual Storyteller',
   description:
-    'Portfolio of Sanskar — a creative developer, video editor, and designer building premium digital experiences.',
+    'Portfolio of Sanskar - a creative developer, video editor, and designer building premium digital experiences.',
   keywords: [
     'Sanskar',
     'web developer',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Sanskar' }],
   openGraph: {
-    title: 'Sanskar — Creative Developer & Visual Storyteller',
+    title: 'Sanskar - Creative Developer & Visual Storyteller',
     description:
       'Websites, videos, and thumbnails crafted to feel premium.',
     type: 'website',

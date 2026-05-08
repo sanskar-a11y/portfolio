@@ -10,25 +10,23 @@ export default function FeaturedProjects() {
   const featured = projects.slice(0, 3)
 
   return (
-    <section className="px-6 md:px-12 xl:px-24 py-24">
+    <section className="relative px-5 py-20 sm:px-6 md:px-12 md:py-28 xl:px-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         viewport={{ once: true, margin: '-100px' }}
       >
-        {/* Header */}
-        <div className="flex items-end justify-between mb-12 max-w-[1200px] mx-auto">
+        <div className="mx-auto mb-12 flex max-w-[1200px] flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <span className="pill-gradient inline-block mb-4">Selected Work</span>
-            <h2 className="section-headline">
-              Featured Projects
+            <p className="hero-kicker mb-4">Selected Work</p>
+            <h2 className="section-headline max-w-3xl">
+              Projects with launch-ready shape and story.
             </h2>
           </div>
           <Link
             href="/projects"
-            className="hidden md:inline-flex items-center gap-2 text-sm transition-colors group"
-            style={{ color: 'rgba(240,240,248,0.55)' }}
+            className="group hidden items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-white/55 transition-colors hover:text-white md:inline-flex"
           >
             View all
             <ArrowRight
@@ -38,19 +36,16 @@ export default function FeaturedProjects() {
           </Link>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1200px] mx-auto">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {featured.map((project, i) => (
             <ProjectCard key={project.slug} project={project} featured={i === 1} />
           ))}
         </div>
 
-        {/* Mobile link */}
         <div className="mt-8 text-center md:hidden">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-sm"
-            style={{ color: '#6c63ff' }}
+            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-[#9ffcff]"
           >
             View all projects
             <ArrowRight size={14} />

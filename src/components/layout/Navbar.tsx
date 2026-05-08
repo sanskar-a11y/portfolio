@@ -20,7 +20,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -36,14 +37,14 @@ export default function Navbar() {
           : 'bg-transparent'
       )}
       style={{
-        background: scrolled ? 'rgba(8, 8, 16, 0.85)' : 'rgba(8, 8, 16, 0.7)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottomColor: scrolled ? 'rgba(255,255,255,0.07)' : 'transparent',
-        height: '60px',
+        background: scrolled ? 'rgba(3, 4, 10, 0.78)' : 'rgba(3, 4, 10, 0.35)',
+        backdropFilter: 'blur(22px)',
+        WebkitBackdropFilter: 'blur(22px)',
+        borderBottomColor: scrolled ? 'rgba(159,252,255,0.13)' : 'transparent',
+        height: '68px',
       }}
     >
-      <nav className="flex items-center justify-between h-full max-w-[1200px] mx-auto px-6 md:px-8">
+      <nav className="mx-auto flex h-full max-w-[1200px] items-center justify-between px-5 sm:px-6 md:px-8">
         {/* Logo — geometric SVG mark + wordmark */}
         <Link
           href="/"
@@ -54,21 +55,21 @@ export default function Navbar() {
             <circle cx="9" cy="12" r="7" fill="#6c63ff" opacity="0.7" />
             <circle cx="15" cy="12" r="7" fill="#a78bfa" opacity="0.7" />
           </svg>
-          <span className="text-base font-medium" style={{ color: '#f0f0f8' }}>
+          <span className="text-base font-semibold uppercase tracking-[0.16em]" style={{ color: '#f0f0f8' }}>
             Sanskar
           </span>
         </Link>
 
         {/* Center Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden items-center gap-5 lg:flex xl:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm transition-colors duration-200 relative group"
-              style={{ color: 'rgba(240, 240, 248, 0.65)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#f0f0f8')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(240, 240, 248, 0.65)')}
+              className="group relative text-xs font-semibold uppercase tracking-[0.18em] transition-colors duration-200"
+              style={{ color: 'rgba(240, 240, 248, 0.62)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#9ffcff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(240, 240, 248, 0.62)')}
             >
               {link.label}
             </Link>
@@ -76,17 +77,19 @@ export default function Navbar() {
         </div>
 
         {/* Right CTA — Hire Me white pill */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden items-center lg:flex">
           <Link
             href="/contact"
             className="text-sm font-medium transition-all duration-300"
             style={{
-              background: '#ffffff',
-              color: '#0f0f1a',
+              background: '#9ffcff',
+              color: '#03040a',
               borderRadius: '999px',
-              padding: '8px 20px',
-              fontSize: '14px',
-              fontWeight: 500,
+              padding: '9px 22px',
+              fontSize: '12px',
+              fontWeight: 800,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.03)'
@@ -104,7 +107,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden z-50"
+          className="z-50 rounded-full p-2 lg:hidden"
           style={{ color: '#f0f0f8' }}
           aria-label="Toggle menu"
         >
@@ -118,21 +121,21 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden fixed inset-0 z-40"
+          className="fixed inset-x-0 bottom-0 z-40 lg:hidden"
           style={{
-            top: '60px',
-            background: 'rgba(8, 8, 16, 0.95)',
+            top: '68px',
+            background: 'rgba(3, 4, 10, 0.96)',
             backdropFilter: 'blur(24px)',
             WebkitBackdropFilter: 'blur(24px)',
           }}
         >
-          <div className="flex flex-col items-center justify-center h-full gap-8">
+          <div className="flex min-h-[calc(100dvh-68px)] flex-col items-center justify-center gap-7 px-6 py-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-2xl font-medium transition-colors"
+                className="text-2xl font-semibold uppercase tracking-[0.14em] transition-colors"
                 style={{ color: '#f0f0f8' }}
               >
                 {link.label}
@@ -143,8 +146,8 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
               className="mt-4"
               style={{
-                background: '#ffffff',
-                color: '#0f0f1a',
+                background: '#9ffcff',
+                color: '#03040a',
                 borderRadius: '999px',
                 padding: '12px 32px',
                 fontSize: '16px',

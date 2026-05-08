@@ -40,7 +40,7 @@ export default function CreativeLabPage() {
   return (
     <div className="pt-24">
       {/* Header */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24 text-center">
+      <motion.section {...sectionMotion} className="px-5 py-20 text-center sm:px-6 md:px-12 md:py-24 xl:px-24">
         <span className="pill-gradient inline-block mb-4">Creative Lab</span>
         <h1 className="section-headline mb-6">
           Experiments, concepts,
@@ -49,7 +49,7 @@ export default function CreativeLabPage() {
         </h1>
         <p className="body-dark text-lg max-w-2xl mx-auto">
           A playground for ideas that push boundaries. Some polished, some raw
-          — all made with intent.
+          all made with intent.
         </p>
       </motion.section>
 
@@ -65,7 +65,7 @@ export default function CreativeLabPage() {
             ease: 'easeOut',
           }}
           viewport={{ once: true }}
-          className="px-6 md:px-12 xl:px-24 py-16"
+          className="px-5 py-14 sm:px-6 md:px-12 md:py-16 xl:px-24"
         >
           <div className="max-w-[1200px] mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-2" style={{ color: '#f0f0f8' }}>
@@ -76,9 +76,9 @@ export default function CreativeLabPage() {
             <div
               className={`grid gap-4 ${
                 section.items >= 6
-                  ? 'grid-cols-2 md:grid-cols-3'
+                    ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
                   : section.items >= 4
-                    ? 'grid-cols-2'
+                    ? 'grid-cols-1 sm:grid-cols-2'
                     : 'grid-cols-1 md:grid-cols-3'
               }`}
             >
@@ -116,7 +116,7 @@ export default function CreativeLabPage() {
                     }}
                   >
                     <p className="text-sm font-medium" style={{ color: '#0f0f1a' }}>
-                      {section.title} — Item {i + 1}
+                      {section.title} - Item {i + 1}
                     </p>
                   </div>
                 </motion.div>

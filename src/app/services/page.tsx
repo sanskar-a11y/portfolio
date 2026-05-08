@@ -24,7 +24,7 @@ export default function ServicesPage() {
   return (
     <div className="pt-24">
       {/* Header */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24 text-center">
+      <motion.section {...sectionMotion} className="px-5 py-20 text-center sm:px-6 md:px-12 md:py-24 xl:px-24">
         <span className="pill-gradient inline-block mb-4">What I Offer</span>
         <h1 className="section-headline mb-6">
           Services
@@ -36,8 +36,8 @@ export default function ServicesPage() {
       </motion.section>
 
       {/* Service Blocks */}
-      <section className="px-6 md:px-12 xl:px-24 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
+      <section className="px-5 pb-24 sm:px-6 md:px-12 xl:px-24">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
@@ -45,14 +45,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Workflow Section */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24">
+      <motion.section {...sectionMotion} className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="pill-gradient inline-block mb-4">Process</span>
             <h2 className="section-headline">How I Work</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
             {workflowSteps.map((step, i) => (
               <motion.div
                 key={step.label}
@@ -84,11 +84,11 @@ export default function ServicesPage() {
       </motion.section>
 
       {/* CTA */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-32">
-        <div className="max-w-4xl mx-auto text-center card-float p-12 md:p-20 relative overflow-hidden">
+      <motion.section {...sectionMotion} className="px-5 py-24 sm:px-6 md:px-12 md:py-32 xl:px-24">
+        <div className="relative mx-auto max-w-4xl overflow-hidden px-6 py-10 text-center sm:px-10 md:px-16 md:py-16 card-float">
           <div className="card-gradient-accent" />
           <h2 className="section-headline-light mb-6">
-            Start a project →
+            Start a project
           </h2>
           <p className="body-light mb-10 text-lg">
             Let&apos;s bring your vision to life with precision and care.

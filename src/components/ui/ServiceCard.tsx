@@ -19,45 +19,36 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
       viewport={{ once: true }}
-      className="group relative overflow-hidden card-float h-full flex flex-col"
-      style={{ padding: '32px' }}
+      whileHover={{ y: -8, rotate: index === 1 ? -0.5 : 0.5 }}
+      className="cosmic-card group relative flex h-full flex-col overflow-hidden p-6 sm:p-8"
     >
-      {/* Decorative large number */}
       <span
-        className="absolute top-6 right-6 text-6xl font-bold leading-none select-none pointer-events-none"
-        style={{ color: 'rgba(108,99,255,0.08)' }}
+        className="absolute right-5 top-5 select-none font-mono text-7xl font-bold leading-none"
+        style={{ color: 'rgba(159,252,255,0.08)' }}
       >
         {num}
       </span>
 
-      {/* Icon */}
       <div
-        className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
-        style={{
-          background: 'linear-gradient(135deg, rgba(108,99,255,0.12), rgba(167,139,250,0.12))',
-        }}
+        className="mb-7 flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/[0.06]"
       >
-        <Icon className="w-7 h-7" style={{ color: '#6c63ff' }} />
+        <Icon className="h-7 w-7" style={{ color: '#9ffcff' }} />
       </div>
 
-      {/* Title */}
-      <h3 className="card-title mb-3">{service.title}</h3>
+      <h3 className="mb-4 text-2xl font-semibold text-white">{service.title}</h3>
 
-      {/* Description */}
-      <p className="body-light text-sm mb-6 leading-relaxed">
+      <p className="body-dark mb-7 text-sm leading-relaxed">
         {service.description}
       </p>
 
-      {/* Deliverables as pill-gradient tags */}
-      <div className="flex flex-wrap gap-2 mb-8 mt-auto">
+      <div className="mb-8 mt-auto flex flex-wrap gap-2">
         {service.deliverables.map((item) => (
-          <span key={item} className="pill-gradient text-xs">
+          <span key={item} className="cosmic-chip text-xs">
             {item}
           </span>
         ))}
       </div>
 
-      {/* CTA */}
       <CTAButton variant="accent" href="/contact" className="w-full">
         Get Started
       </CTAButton>

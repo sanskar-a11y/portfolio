@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { cn } from '@/lib/utils/cn'
 
-const MotionLink = motion(Link)
+const MotionLink = motion.create(Link)
 
 interface CTAButtonProps {
   variant?: 'primary' | 'secondary' | 'accent'

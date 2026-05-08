@@ -32,7 +32,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'hackathon-coer',
-    title: 'Hackathon Project — COER University',
+    title: 'Hackathon Project - COER University',
     description:
       'National-level hackathon solution built and presented as team leader.',
     stack: ['Rapid Prototyping', 'Team Collaboration'],
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     slug: 'ai-productivity-app',
     title: 'AI Productivity App',
     description:
-      'An AI-powered task management and workflow app — currently in progress.',
+      'An AI-powered task management and workflow app currently in progress.',
     stack: ['AI Tools', 'Prompt Engineering'],
     category: 'Experiments',
     live: '',
@@ -61,6 +61,6 @@ export const projects: Project[] = [
       'Productivity tools lack smart AI-driven workflow automation.',
     solution:
       'Building an app that uses prompt engineering to automate task management.',
-    outcome: 'In active development — 2026.',
+    outcome: 'In active development for 2026.',
   },
 ]

@@ -1,7 +1,4 @@
-'use client'
-
 import { notFound } from 'next/navigation'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react'
 import { GithubIcon } from '@/components/ui/BrandIcons'
@@ -11,6 +8,10 @@ import CTAButton from '@/components/ui/CTAButton'
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>
+}
+
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }))
 }
 
 export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
@@ -24,41 +25,23 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
   const nextProject =
     projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null
 
-  return <ProjectDetailClient project={project} prevProject={prevProject} nextProject={nextProject} />
-}
-
-function ProjectDetailClient({
-  project,
-  prevProject,
-  nextProject,
-}: {
-  project: (typeof projects)[number]
-  prevProject: (typeof projects)[number] | null
-  nextProject: (typeof projects)[number] | null
-}) {
   return (
     <div className="pt-24">
-      {/* Hero Banner */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="px-6 md:px-12 xl:px-24 py-24"
-      >
-        <div className="max-w-4xl mx-auto">
+      <section className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
+        <div className="mx-auto max-w-4xl">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-sm transition-colors mb-8"
-            style={{ color: 'rgba(240,240,248,0.55)' }}
+            className="mb-8 inline-flex items-center gap-2 text-sm transition-colors"
+            style={{ color: 'rgba(240,240,248,0.65)' }}
           >
             <ArrowLeft size={14} />
             Back to Projects
           </Link>
 
-          <div className="flex items-center gap-3 mb-4">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
             {project.status === 'Live' && (
               <span
-                className="px-3 py-1 text-xs font-medium rounded-full"
+                className="rounded-full px-3 py-1 text-xs font-medium"
                 style={{
                   background: 'rgba(34,197,94,0.12)',
                   color: '#22c55e',
@@ -69,24 +52,17 @@ function ProjectDetailClient({
               </span>
             )}
             {project.status === 'In Progress' && (
-              <span className="pill-gradient text-xs">
-                In Progress
-              </span>
+              <span className="pill-gradient text-xs">In Progress</span>
             )}
-            <span className="text-sm" style={{ color: 'rgba(240,240,248,0.55)' }}>
+            <span className="text-sm" style={{ color: 'rgba(240,240,248,0.65)' }}>
               {project.category}
             </span>
           </div>
 
-          <h1 className="section-headline mb-6">
-            {project.title}
-          </h1>
-          <p className="body-dark text-lg max-w-2xl">
-            {project.description}
-          </p>
+          <h1 className="section-headline mb-6">{project.title}</h1>
+          <p className="body-dark max-w-2xl text-lg">{project.description}</p>
 
-          {/* Links */}
-          <div className="flex gap-4 mt-8">
+          <div className="mt-8 flex max-w-md flex-col gap-3 sm:max-w-none sm:flex-row">
             {project.live && (
               <a
                 href={project.live}
@@ -111,59 +87,47 @@ function ProjectDetailClient({
             )}
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Visual Gallery Placeholder */}
-      <section className="px-6 md:px-12 xl:px-24 pb-16">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+      <section className="px-5 pb-16 sm:px-6 md:px-12 xl:px-24">
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <div
               key={i}
-              className="card-float aspect-video flex items-center justify-center overflow-hidden"
+              className="card-float flex aspect-video items-center justify-center overflow-hidden"
               style={{
                 background: 'linear-gradient(135deg, #f0edff 0%, #e8f4ff 50%, #ffedf5 100%)',
                 border: '1px solid rgba(255,255,255,0.9)',
               }}
             >
-              <span className="text-xs" style={{ color: '#6b6b80' }}>Screenshot {i}</span>
+              <span className="text-xs font-medium" style={{ color: '#6b6b80' }}>
+                Case Study Frame {i}
+              </span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Problem / Solution / Outcome */}
-      <section className="px-6 md:px-12 xl:px-24 py-24">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-5 md:grid-cols-3">
           {[
             { title: 'Problem', text: project.problem },
             { title: 'Solution', text: project.solution },
             { title: 'Outcome', text: project.outcome },
-          ].map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="card-float p-6"
-            >
+          ].map((item) => (
+            <div key={item.title} className="card-float p-6">
               <h3 className="label-overline mb-3" style={{ color: '#6c63ff' }}>
                 {item.title}
               </h3>
-              <p className="body-light leading-relaxed">
-                {item.text}
-              </p>
-            </motion.div>
+              <p className="body-light leading-relaxed">{item.text}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Stack */}
-      <section className="px-6 md:px-12 xl:px-24 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="label-overline mb-4">
-            Tech Stack
-          </h3>
+      <section className="px-5 py-12 sm:px-6 md:px-12 md:py-16 xl:px-24">
+        <div className="mx-auto max-w-4xl">
+          <h3 className="label-overline mb-4">Tech Stack</h3>
           <div className="flex flex-wrap gap-2">
             {project.stack.map((tech) => (
               <SkillPill key={tech} label={tech} />
@@ -172,26 +136,25 @@ function ProjectDetailClient({
         </div>
       </section>
 
-      {/* Navigation */}
-      <section className="px-6 md:px-12 xl:px-24 py-16" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-        <div className="max-w-4xl mx-auto flex justify-between">
+      <section className="px-5 py-12 sm:px-6 md:px-12 md:py-16 xl:px-24" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+        <div className="mx-auto flex max-w-4xl flex-col justify-between gap-5 sm:flex-row">
           {prevProject ? (
             <Link
               href={`/projects/${prevProject.slug}`}
-              className="flex items-center gap-2 text-sm transition-colors"
-              style={{ color: 'rgba(240,240,248,0.55)' }}
+              className="inline-flex items-center gap-2 text-sm transition-colors"
+              style={{ color: 'rgba(240,240,248,0.65)' }}
             >
               <ArrowLeft size={14} />
               {prevProject.title}
             </Link>
           ) : (
-            <div />
+            <span />
           )}
           {nextProject && (
             <Link
               href={`/projects/${nextProject.slug}`}
-              className="flex items-center gap-2 text-sm transition-colors"
-              style={{ color: 'rgba(240,240,248,0.55)' }}
+              className="inline-flex items-center gap-2 text-sm transition-colors sm:text-right"
+              style={{ color: 'rgba(240,240,248,0.65)' }}
             >
               {nextProject.title}
               <ArrowRight size={14} />
@@ -200,9 +163,8 @@ function ProjectDetailClient({
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="px-6 md:px-12 xl:px-24 py-24">
-        <div className="max-w-2xl mx-auto text-center">
+      <section className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
+        <div className="mx-auto max-w-2xl text-center">
           <h2 className="section-headline mb-6">
             Like what you <span className="text-gradient">see?</span>
           </h2>

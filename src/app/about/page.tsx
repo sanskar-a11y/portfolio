@@ -64,10 +64,10 @@ const sectionMotion = {
 export default function AboutPage() {
   return (
     <div className="pt-24">
-      {/* Section 1 — Intro */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Photo placeholder — card-float white card */}
+      {/* Section 1 - Intro */}
+      <motion.section {...sectionMotion} className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12">
+          {/* Photo placeholder - card-float white card */}
           <div className="card-float aspect-square flex items-center justify-center overflow-hidden">
             <div className="text-center">
               <div
@@ -93,15 +93,15 @@ export default function AboutPage() {
             <p className="body-dark text-lg leading-relaxed">
               I&apos;m Sanskar, a final-semester Computer Science student from
               Uttar Pradesh, India. I build web apps, edit videos, and design
-              thumbnails — and I care deeply about making things that look and
+              thumbnails, and I care deeply about making things that look and
               feel premium.
             </p>
           </div>
         </div>
       </motion.section>
 
-      {/* Section 2 — Timeline */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24">
+      {/* Section 2 - Timeline */}
+      <motion.section {...sectionMotion} className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <span className="pill-gradient inline-block mb-4">Journey</span>
@@ -152,8 +152,8 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      {/* Section 3 — Skills */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24">
+      {/* Section 3 - Skills */}
+      <motion.section {...sectionMotion} className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="pill-gradient inline-block mb-4">Expertise</span>
@@ -177,8 +177,8 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      {/* Section 4 — Certificates */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24">
+      {/* Section 4 - Certificates */}
+      <motion.section {...sectionMotion} className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="pill-gradient inline-block mb-4">Credentials</span>
@@ -215,8 +215,8 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      {/* Section 5 — Philosophy Quote */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-32">
+      {/* Section 5 - Philosophy Quote */}
+      <motion.section {...sectionMotion} className="px-5 py-24 sm:px-6 md:px-12 md:py-32 xl:px-24">
         <div className="max-w-3xl mx-auto text-center">
           <blockquote className="relative">
             <div
@@ -232,13 +232,13 @@ export default function AboutPage() {
               I treat every project like a <span className="text-gradient">product launch.</span>{' '}
               Clean structure, premium feel, no shortcuts.
             </p>
-            <footer className="mt-8" style={{ color: 'rgba(240,240,248,0.55)' }}>— Sanskar</footer>
+            <footer className="mt-8" style={{ color: 'rgba(240,240,248,0.55)' }}>- Sanskar</footer>
           </blockquote>
         </div>
       </motion.section>
 
-      {/* Section 6 — CTA */}
-      <motion.section {...sectionMotion} className="px-6 md:px-12 xl:px-24 py-24">
+      {/* Section 6 - CTA */}
+      <motion.section {...sectionMotion} className="px-5 py-20 sm:px-6 md:px-12 md:py-24 xl:px-24">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="section-headline mb-6">
             Want to <span className="text-gradient">work together?</span>

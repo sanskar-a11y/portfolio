@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Film, ImageIcon } from 'lucide-react'
+import { ArrowRight, Code, Film, ImageIcon, Rocket } from 'lucide-react'
 import HeroSection from '@/components/hero/HeroSection'
 import ServicesSnapshot from '@/components/sections/ServicesSnapshot'
 import FeaturedProjects from '@/components/sections/FeaturedProjects'
@@ -15,64 +15,53 @@ const sectionMotion = {
   viewport: { once: true, margin: '-100px' },
 }
 
+const identities = [
+  { label: 'Creative Developer', icon: Code, color: '#9ffcff' },
+  { label: 'Editor', icon: Film, color: '#ffd166' },
+  { label: 'Designer', icon: ImageIcon, color: '#ff7ab6' },
+]
+
 export default function Home() {
   return (
     <>
-      {/* Section 1 — Hero */}
       <HeroSection />
 
-      {/* Section 2 — Identity Strip */}
-      <motion.section {...sectionMotion} className="py-20 px-6 md:px-12 xl:px-24">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-          <div className="flex items-center gap-3">
-            <Code className="w-6 h-6" style={{ color: '#6c63ff' }} />
-            <span className="text-xl md:text-2xl font-light" style={{ color: 'rgba(240,240,248,0.55)' }}>
-              Creative Developer</span>
-            </span>
-          </div>
-          <span className="hidden md:block text-2xl" style={{ color: 'rgba(240,240,248,0.20)' }}>·</span>
-          <div className="flex items-center gap-3">
-            <Film className="w-6 h-6" style={{ color: '#a78bfa' }} />
-            <span className="text-xl md:text-2xl font-light" style={{ color: 'rgba(240,240,248,0.55)' }}>
-              Editor
-            </span>
-          </div>
-          <span className="hidden md:block text-2xl" style={{ color: 'rgba(240,240,248,0.20)' }}>·</span>
-          <div className="flex items-center gap-3">
-            <ImageIcon className="w-6 h-6" style={{ color: '#ec4899' }} />
-            <span className="text-xl md:text-2xl font-light" style={{ color: 'rgba(240,240,248,0.55)' }}>
-              Designer
-            </span>
-          </div>
+      <motion.section {...sectionMotion} className="px-5 py-8 sm:px-6 md:px-12 xl:px-24">
+        <div className="mx-auto grid max-w-[1120px] grid-cols-1 gap-3 sm:grid-cols-3">
+          {identities.map((item) => {
+            const Icon = item.icon
+
+            return (
+              <div key={item.label} className="signal-tile group min-h-[78px] justify-between px-5">
+                <Icon className="h-6 w-6 shrink-0" style={{ color: item.color }} />
+                <span className="text-base font-semibold uppercase tracking-[0.18em] sm:text-xs lg:text-sm">{item.label}</span>
+              </div>
+            )
+          })}
         </div>
       </motion.section>
 
-      {/* Section 3 — Services */}
       <ServicesSnapshot />
-
-      {/* Section 4 — Featured Projects */}
       <FeaturedProjects />
-
-      {/* Section 5 — Trust Strip */}
       <TrustStrip />
 
-      {/* Section 6 — CTA */}
-      <motion.section {...sectionMotion} className="py-32 px-6 md:px-12 xl:px-24">
-        <div className="max-w-4xl mx-auto text-center card-float p-12 md:p-20 relative overflow-hidden">
-          <div className="card-gradient-accent" />
-          <h2 className="section-headline-light mb-6">
-            Ready to work together?
-          </h2>
-          <p className="body-light mb-10 text-lg">
-            Let&apos;s build something that stands out.
+      <motion.section {...sectionMotion} className="px-5 py-24 sm:px-6 md:px-12 xl:px-24">
+        <div className="mission-cta relative mx-auto max-w-5xl overflow-hidden px-6 py-12 text-center sm:px-10 md:px-16 md:py-18">
+          <div className="mission-cta-orbit" aria-hidden="true" />
+          <Rocket className="mx-auto mb-7 h-8 w-8 text-[#9ffcff]" />
+          <h2 className="section-headline mb-6">Ready to launch something people remember?</h2>
+          <p className="body-dark mx-auto mb-10 max-w-2xl text-lg">
+            Let&apos;s shape your next site, edit, or creator asset into a polished digital object with real momentum.
           </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <CTAButton variant="accent" href="/contact">Contact Me</CTAButton>
+          <div className="mx-auto flex max-w-md flex-col justify-center gap-3 sm:max-w-none sm:flex-row">
+            <CTAButton variant="accent" href="/contact">
+              Contact Me
+              <ArrowRight size={16} />
+            </CTAButton>
             <CTAButton
               variant="secondary"
               href="https://www.fiverr.com/sanskar6008/buying?source=avatar_menu_profile"
               external
-              className="!border-[rgba(108,99,255,0.3)] !text-[#6c63ff]"
             >
               Open Fiverr
             </CTAButton>
